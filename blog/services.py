@@ -2,6 +2,8 @@ import os.path
 
 import markdown
 
+from md_extensions import URLExtension
+
 
 def post_url_isvalid(value):
     avoid = ['.', '/', '\\', '|']
@@ -32,5 +34,5 @@ def post_render_md_to_html(name):
     with open(path, 'r') as fp:
         return markdown.markdown(
             fp.read(),
-            extensions=['fenced_code']
+            extensions=['fenced_code', URLExtension(post_name=name)]
         )
