@@ -36,3 +36,8 @@ def post_render_md_to_html(name):
             fp.read(),
             extensions=['fenced_code', URLExtension(post_name=name)]
         )
+
+
+def index_render():
+    with open('articulos/index.html', 'r') as fp:
+        return fp.read()

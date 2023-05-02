@@ -2,10 +2,16 @@ from flask import Flask, render_template, send_file
 
 from markupsafe import Markup
 
-from services import post_render_md_to_html
+from services import post_render_md_to_html, index_render
 
 
 app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    content = index_render()
+    return render_template('base.html', content=Markup(content))
 
 
 @app.route('/leer/<post_slug>.html')
